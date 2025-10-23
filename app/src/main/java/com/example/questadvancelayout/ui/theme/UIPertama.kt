@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -67,7 +68,10 @@ fun Activitaspertama(modifier: Modifier){
             Column (){
                 Text(
                     text = stringResource(R.string.nama),
-                    fontSize = 30.dp
+                    fontSize = 30.sp,
+                    fontFamily = FontFamily.Cursive,
+                    color = Color.White,
+                    modifier = Modifier.padding(top=15.dp)
 
                 )
             }
