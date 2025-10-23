@@ -1,5 +1,7 @@
 package com.example.questadvancelayout.ui.theme
 
+import android.R.attr.fontWeight
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +15,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.R
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,10 +34,10 @@ fun Activitaspertama(modifier: Modifier){
     ){
         Text(stringResource( R.String.prodi),
             fontSize = 35.sp,
-            fontWeight = Fontweight.Bold)
+            fontWeight = fontWeight.Bold)
         Text(stringResource(R.String.univ),
         fontSize = 22.sp)
-        spacer(modifier = Modifier.height(25.dp))
+        Spacer(modifier = Modifier.height(25.dp))
         Card(modifier = Modifier
             .fillMaxWidth(1f)
             .padding(12.dp)
@@ -85,6 +88,11 @@ fun Activitaspertama(modifier: Modifier){
 
         }
     }
+}
+){
+    Box(
+
+    )
 }
 
 
