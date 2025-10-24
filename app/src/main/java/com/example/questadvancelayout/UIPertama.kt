@@ -69,7 +69,7 @@ fun KartuMahasiswaScreen() {
         // Card 3
         MahasiswaCard(
             nama = "Bahlil",
-            alamat = "Isi Alamat",
+            alamat = "Pinggir jalan",
             warna = Color(0xFF2E7D32)
         )
 
