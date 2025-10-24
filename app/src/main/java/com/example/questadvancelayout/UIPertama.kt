@@ -1,86 +1,122 @@
 package com.example.questadvancelayout
-
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-
-@Composable
-
-fun Activitas(modifier: Modifier) {
-    Column(modifier = Modifier.padding(top=100.dp)
-        .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(stringResource( R.string.prodi),
-            fontSize = 35.sp,
-            fontWeight = FontWeight.Bold)
-        Text(stringResource(R.string.univ),
-            fontSize = 22.sp)
-        Spacer(modifier = Modifier.height(25.dp))
-        Card(modifier = Modifier
-            .fillMaxWidth()
-            .padding(12.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = Color.DarkGray
-            )) {
-            Row() {
-                val gambar = painterResource(R.drawable.logo_umy)
-                Image(
-                    painter = gambar,
-                    contentDescription = null,
-                    modifier = Modifier.size(100.dp).padding(5.dp)
-                )
-                Spacer(modifier = Modifier.width(30.dp))
-                Column() {
-                    Text(
-                        stringResource(R.string.nama),
-                        fontSize = 30.sp,
-                        fontFamily = FontFamily.Cursive,
-                        color = Color.White,
-                        modifier = Modifier.padding(top=15.dp)
-                    )
-                    Text(
-                        stringResource(R.string.alamat),
-                        fontSize = 20.sp,
-                        color = Color.Yellow,
-                        modifier = Modifier.padding(top=10.dp)
-                    )
-
-                }
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            // ⬇️ Panggil fungsi tampilan utama kamu di sini
+            Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
+                KartuMahasiswaScreen()
             }
         }
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-        ){
-            Text(
-                stringResource(R.string.copy),
+    }
+}
+
+@Composable
+fun KartuMahasiswaScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        // Judul utama
+        Text(
+            text = "Teknologi Informasi",
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color(0xFF2C2C2C),
+            textAlign = TextAlign.Center
+        )
+        Text(
+            text = "Universitas Muhammadiyah Yogyakarta",
+            fontSize = 14.sp,
+            color = Color.Gray,
+            textAlign = TextAlign.Center
+        )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        // Card 1
+        MahasiswaCard(
+            nama = "Bambang Sumantri",
+            alamat = "Turi, Sleman",
+            warna = Color(0xFF2C2C2C)
+        )
+
+        // Card 2
+        MahasiswaCard(
+            nama = "Azis Dwi Mukti",
+            alamat = "Isi Alamat",
+            warna = Color(0xFF1565C0)
+        )
+
+        // Card 3
+        MahasiswaCard(
+            nama = "Isi Nama",
+            alamat = "Isi Alamat",
+            warna = Color(0xFF2E7D32)
+        )
+
+        Spacer(modifier = Modifier.height(40.dp))
+
+        Text(
+            text = "copyright, 2025",
+            color = Color.Gray,
+            fontSize = 12.sp
+        )
+    }
+}
+
+@Composable
+fun MahasiswaCard(nama: String, alamat: String, warna: Color) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 6.dp),
+        colors = CardDefaults.cardColors(containerColor = warna),
+        elevation = CardDefaults.cardElevation(6.dp)
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(12.dp)
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.logo_umy), // pastikan nama file logonya sama
+                contentDescription = "Logo",
                 modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .padding(bottom = 50.dp)
+                    .size(55.dp)
+                    .padding(end = 12.dp)
             )
+
+            Column {
+                Text(
+                    text = nama,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp
+                )
+                Text(
+                    text = alamat,
+                    color = Color.Yellow,
+                    fontSize = 14.sp
+                )
+            }
         }
     }
 }
